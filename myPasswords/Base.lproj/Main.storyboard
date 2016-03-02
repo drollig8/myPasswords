@@ -1,27 +1,135 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="g2j-rd-aJx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Entry List View Controller-->
+        <scene sceneID="9n8-Sg-kPZ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="myPasswords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntryListViewController" id="P25-Rk-0Sg" customClass="EntryListViewController" customModule="myPasswords" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="fdN-SB-9he"/>
+                        <viewControllerLayoutGuide type="bottom" id="rM2-9t-ruo"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="JSe-TI-g0y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1p3-Ae-0zm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1p3-Ae-0zm" secondAttribute="trailing" id="0rU-9J-VuN"/>
+                            <constraint firstItem="1p3-Ae-0zm" firstAttribute="leading" secondItem="JSe-TI-g0y" secondAttribute="leading" id="3cH-y3-OMI"/>
+                            <constraint firstItem="1p3-Ae-0zm" firstAttribute="top" secondItem="JSe-TI-g0y" secondAttribute="top" id="XND-n5-hBr"/>
+                            <constraint firstItem="rM2-9t-ruo" firstAttribute="top" secondItem="1p3-Ae-0zm" secondAttribute="bottom" id="nup-Sb-GUB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="r1t-JX-0nv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="b5R-8k-b0j">
+                            <connections>
+                                <action selector="addEntry:" destination="P25-Rk-0Sg" id="Amq-p8-AfZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="dataProvider" destination="ceN-3u-FSn" id="h6c-21-VpN"/>
+                        <outlet property="tableView" destination="1p3-Ae-0zm" id="68M-xG-qY6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1w-be-HLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="ceN-3u-FSn" customClass="EntryListDataProvider" customModule="myPasswords" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="2146" y="567"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Phx-NF-MlQ">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="XoK-Ud-bUc" customClass="DetailViewController" customModule="myPasswords" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iaH-7P-f8d"/>
+                        <viewControllerLayoutGuide type="bottom" id="PLN-0I-BAf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vvx-Ub-tHP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IJf-Wd-1vY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2520" y="636"/>
+        </scene>
+        <!--Add Entry View Controller-->
+        <scene sceneID="XCr-Bm-2Ba">
+            <objects>
+                <viewController storyboardIdentifier="AddEntryViewController" id="ygu-aN-eDy" customClass="AddEntryViewController" customModule="myPasswords" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ck0-6f-20q"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ab4-8I-RRK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y1l-iF-FDL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Nm-I7-Gl0">
+                                <rect key="frame" x="20" y="28" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="titleTextField" destination="3Nm-I7-Gl0" id="UiF-0y-veF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6LR-Ak-bbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="1277"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DHu-rD-Ak4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g2j-rd-aJx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jrM-zM-pe5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jh1-Uc-tKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="851" y="636"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MZ9-mV-2Ck">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FP0-wX-4jA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Fn-97-ANN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="P25-Rk-0Sg" kind="relationship" relationship="rootViewController" id="jn6-k3-FB6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3gF-gH-KvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="567"/>
         </scene>
     </scenes>
 </document>

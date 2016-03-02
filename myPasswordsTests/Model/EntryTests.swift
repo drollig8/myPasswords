@@ -21,38 +21,56 @@ class EntryTests: XCTestCase {
         super.tearDown()
     }
     
-    func testInit_ShouldSetLoginName()
+    func testInit_ShouldSetTitle()
     {
-        let entry = Entry(loginName: "TestName")
+        let entry = Entry(title: "Titel")
+        XCTAssertEqual(entry.title, "Titel","Initializer should set Title")
+    }
+    
+    func testInit_ShouldSetTitleAndLoginName()
+    {
+        let entry = Entry(title: "Titel", loginName: "TestName")
         XCTAssertEqual(entry.loginName, "TestName","Initializer should set LoginName")
     }
     
-    func testInit_ShouldSetLoginNameAndPassword()
+    func testInit_ShouldSetTitleAndLoginNameAndPasswort()
     {
-        let entry = Entry(loginName: "TestName", password: "Password")
-        XCTAssertEqual(entry.password, "Password","Initializer should set LoginName")
+        let entry = Entry(title: "Titel", loginName: "TestName", password: "Password")
+        XCTAssertEqual(entry.password, "Password","Initializer should set Password")
     }
     
-    func testInit_ShouldSetLoginNameAndPasswordAndTitle()
+
+    
+    func testInit_ShouldSetTitleAndLoginNameAndPasswortAndUrl()
     {
-        let entry = Entry(loginName: "TestName", password: "Password", title: "Titel")
-        XCTAssertEqual(entry.title, "Titel","Initializer should set LoginName")
+        let entry = Entry(title: "Titel", loginName: "TestName", password: "Password", url: "url")
+        XCTAssertEqual(entry.url, "url","Initializer should set url")
     }
     
-    func testInit_ShouldSetLoginNameAndPasswordAndTitleAndUrl()
+    func testInit_ShouldSetTitleAndLoginNameAndPasswortAndUrlRemarks()
     {
-        let entry = Entry(loginName: "TestName", password: "Password", title: "Titel", url: "Url")
-        XCTAssertEqual(entry.url, "Url","Initializer should set LoginName")
-    }
-    
-    func testInit_ShouldSetLoginNameAndPasswordAndTitleAndUrlRemarks()
-    {
-        let entry = Entry(loginName: "TestName", password: "Password", title: "Titel", url: "Url", remarks: "remarks")
-        XCTAssertEqual(entry.remarks, "remarks","Initializer should set LoginName")
+        let entry = Entry(title: "Titel", loginName: "TestName", password: "Password", url: "url", remarks: "remarks")
+        XCTAssertEqual(entry.remarks, "remarks","Initializer should set remarks")
     }
     
     // H.T. = Honey Tits
     
+    func testThatTwoEqualEntries_AreEqual()
+    {
+        let firstEntry = Entry(title: "Titel", loginName: "TestName", password: "Password", url: "url", remarks: "remarks")
+        let secondEntry = Entry(title: "Titel", loginName: "TestName", password: "Password", url: "url", remarks: "remarks")
+        
+        XCTAssertTrue(firstEntry == secondEntry)
+    }
+    
+    func testThatTwoNotEqualEntries_AreNotEqual()
+    {
+        let firstEntry = Entry(title: "Titel", loginName: "TestName", password: "Password", url: "url", remarks: "remarks")
+        let secondEntry = Entry(title: "TitelDifferent", loginName: "TestName", password: "Password", url: "url", remarks: "remarks")
+        
+        XCTAssertFalse(firstEntry == secondEntry)
+    }
+
 }
 /*
 
