@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E1A89211C867E2900E433B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89201C867E2900E433B2 /* AppDelegate.swift */; };
+		6E1A89231C867E2900E433B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89221C867E2900E433B2 /* ViewController.swift */; };
+		6E1A89261C867E2900E433B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A89241C867E2900E433B2 /* Main.storyboard */; };
+		6E1A89281C867E2900E433B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A89271C867E2900E433B2 /* Assets.xcassets */; };
+		6E1A892B1C867E2900E433B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A89291C867E2900E433B2 /* LaunchScreen.storyboard */; };
+		6E1A89361C867E2900E433B2 /* myPasswordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89351C867E2900E433B2 /* myPasswordsTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6E1A89321C867E2900E433B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E1A89151C867E2900E433B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E1A891C1C867E2900E433B2;
+			remoteInfo = myPasswords;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6E1A891D1C867E2900E433B2 /* myPasswords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPasswords.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E1A89201C867E2900E433B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6E1A89221C867E2900E433B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6E1A89251C867E2900E433B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E1A89271C867E2900E433B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E1A892A1C867E2900E433B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E1A892C1C867E2900E433B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E1A89311C867E2900E433B2 /* myPasswordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myPasswordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E1A89351C867E2900E433B2 /* myPasswordsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPasswordsTests.swift; sourceTree = "<group>"; };
+		6E1A89371C867E2900E433B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E1A891A1C867E2900E433B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E1A892E1C867E2900E433B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E1A89141C867E2900E433B2 = {
+			isa = PBXGroup;
+			children = (
+				6E1A891F1C867E2900E433B2 /* myPasswords */,
+				6E1A89341C867E2900E433B2 /* myPasswordsTests */,
+				6E1A891E1C867E2900E433B2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6E1A891E1C867E2900E433B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A891D1C867E2900E433B2 /* myPasswords.app */,
+				6E1A89311C867E2900E433B2 /* myPasswordsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E1A891F1C867E2900E433B2 /* myPasswords */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A89201C867E2900E433B2 /* AppDelegate.swift */,
+				6E1A89221C867E2900E433B2 /* ViewController.swift */,
+				6E1A89241C867E2900E433B2 /* Main.storyboard */,
+				6E1A89271C867E2900E433B2 /* Assets.xcassets */,
+				6E1A89291C867E2900E433B2 /* LaunchScreen.storyboard */,
+				6E1A892C1C867E2900E433B2 /* Info.plist */,
+			);
+			path = myPasswords;
+			sourceTree = "<group>";
+		};
+		6E1A89341C867E2900E433B2 /* myPasswordsTests */ = {
+			isa = PBXGroup;
+			children = (
+				6E1A89351C867E2900E433B2 /* myPasswordsTests.swift */,
+				6E1A89371C867E2900E433B2 /* Info.plist */,
+			);
+			path = myPasswordsTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E1A891C1C867E2900E433B2 /* myPasswords */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E1A893A1C867E2900E433B2 /* Build configuration list for PBXNativeTarget "myPasswords" */;
+			buildPhases = (
+				6E1A89191C867E2900E433B2 /* Sources */,
+				6E1A891A1C867E2900E433B2 /* Frameworks */,
+				6E1A891B1C867E2900E433B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myPasswords;
+			productName = myPasswords;
+			productReference = 6E1A891D1C867E2900E433B2 /* myPasswords.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6E1A89301C867E2900E433B2 /* myPasswordsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E1A893D1C867E2900E433B2 /* Build configuration list for PBXNativeTarget "myPasswordsTests" */;
+			buildPhases = (
+				6E1A892D1C867E2900E433B2 /* Sources */,
+				6E1A892E1C867E2900E433B2 /* Frameworks */,
+				6E1A892F1C867E2900E433B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E1A89331C867E2900E433B2 /* PBXTargetDependency */,
+			);
+			name = myPasswordsTests;
+			productName = myPasswordsTests;
+			productReference = 6E1A89311C867E2900E433B2 /* myPasswordsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E1A89151C867E2900E433B2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = madeTK.com;
+				TargetAttributes = {
+					6E1A891C1C867E2900E433B2 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					6E1A89301C867E2900E433B2 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 6E1A891C1C867E2900E433B2;
+					};
+				};
+			};
+			buildConfigurationList = 6E1A89181C867E2900E433B2 /* Build configuration list for PBXProject "myPasswords" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6E1A89141C867E2900E433B2;
+			productRefGroup = 6E1A891E1C867E2900E433B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E1A891C1C867E2900E433B2 /* myPasswords */,
+				6E1A89301C867E2900E433B2 /* myPasswordsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E1A891B1C867E2900E433B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E1A892B1C867E2900E433B2 /* LaunchScreen.storyboard in Resources */,
+				6E1A89281C867E2900E433B2 /* Assets.xcassets in Resources */,
+				6E1A89261C867E2900E433B2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E1A892F1C867E2900E433B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E1A89191C867E2900E433B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E1A89231C867E2900E433B2 /* ViewController.swift in Sources */,
+				6E1A89211C867E2900E433B2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E1A892D1C867E2900E433B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E1A89361C867E2900E433B2 /* myPasswordsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6E1A89331C867E2900E433B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E1A891C1C867E2900E433B2 /* myPasswords */;
+			targetProxy = 6E1A89321C867E2900E433B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6E1A89241C867E2900E433B2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E1A89251C867E2900E433B2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6E1A89291C867E2900E433B2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E1A892A1C867E2900E433B2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6E1A89381C867E2900E433B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E1A89391C867E2900E433B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6E1A893B1C867E2900E433B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = myPasswords/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswords;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6E1A893C1C867E2900E433B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = myPasswords/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswords;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6E1A893E1C867E2900E433B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = myPasswordsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswordsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myPasswords.app/myPasswords";
+			};
+			name = Debug;
+		};
+		6E1A893F1C867E2900E433B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = myPasswordsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswordsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myPasswords.app/myPasswords";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E1A89181C867E2900E433B2 /* Build configuration list for PBXProject "myPasswords" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E1A89381C867E2900E433B2 /* Debug */,
+				6E1A89391C867E2900E433B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E1A893A1C867E2900E433B2 /* Build configuration list for PBXNativeTarget "myPasswords" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E1A893B1C867E2900E433B2 /* Debug */,
+				6E1A893C1C867E2900E433B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6E1A893D1C867E2900E433B2 /* Build configuration list for PBXNativeTarget "myPasswordsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E1A893E1C867E2900E433B2 /* Debug */,
+				6E1A893F1C867E2900E433B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6E1A89151C867E2900E433B2 /* Project object */;
+}
