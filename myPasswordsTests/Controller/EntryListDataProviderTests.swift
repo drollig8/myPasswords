@@ -23,29 +23,31 @@ class EntryListDataProviderTests: XCTestCase {
     
     func testNumberOfSections_IsNumberOfDifferentFirstLetter()
     {
-        /* First implement EntryListViewController 
         let sut = EntryListDataProvider()
-        sut.itemManager = EntryManager()
+        let tableView = UITableView()
+        sut.entryManager = EntryManager()
+        sut.entryManager.addEntry(Entry(title: "A-Title"))
+        sut.entryManager.addEntry(Entry(title: "B-Title"))
+        let numberOfSections = sut.numberOfSectionsInTableView(tableView)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        controller = storyboard.instantiateViewControllerWithIdentifier("EntryListViewController") as! EntryListViewController
-        
-        _ = controller.view
-        
-        tableView = controller.tableView
-        tableView.dataSource = sut
-        tableView.delegate = sut
-        
-        sut.itemManager?.addItem(ToDoItem(title: "First"))
-        
-        XCTAssertEqual(tableView.numberOfRowsInSection(0), 1)
-        
-        sut.itemManager?.addItem(ToDoItem(title: "Second"))
-        tableView.reloadData()
-        
-        XCTAssertEqual(tableView.numberOfRowsInSection(0), 2)
-        */
+        XCTAssertEqual(numberOfSections, 2)
     }
+    
+    
+    func testNumberOfRowsInFirstSections_IsNumberEntries()
+    {
+        let sut = EntryListDataProvider()
+        let tableView = UITableView()
+        sut.entryManager = EntryManager()
+        sut.entryManager.addEntry(Entry(title: "A-Title"))
+        sut.entryManager.addEntry(Entry(title: "B-Title"))
+        sut.entryManager.addEntry(Entry(title: "B-Title1"))
+        let numberOfSections0 = sut.tableView(tableView, numberOfRowsInSection: 0)
+        let numberOfSections1 = sut.tableView(tableView, numberOfRowsInSection: 1)
+        XCTAssertEqual(numberOfSections0, 1)
+        XCTAssertEqual(numberOfSections1, 2)
+    }
+
 }
 
 

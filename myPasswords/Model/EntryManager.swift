@@ -13,18 +13,42 @@ class EntryManager
 
     private var entries = [Entry]()
     
-    func numberOfSections() -> Int
+    private func getSectionLetters() -> [String]
     {
         var sections = Set<String>()
         for entry in entries {
             sections.insert(entry.title.firstLetterUpperCase)
         }
-        return sections.count
+
+        let sortedSectionLetters = Array(sections).sort({$0 < $1})
+        
+        return sortedSectionLetters
+    }
+    
+    func numberOfSections() -> Int
+    {
+        let sectionsLetters = getSectionLetters()
+        
+        return sectionsLetters.count
     }
     
     func entryCountForSection(section: Int) -> Int
     {
-        return entries.count
+        let sectionLetters = getSectionLetters()
+        guard sectionLetters.count > section else {return 0}
+        let sectionLetter = sectionLetters[section]
+        
+        func getAllEntryThatBeginWithLetter(sectionLetter: String) -> [Entry] {
+            var returnArray = [Entry]()
+            for entry in entries {
+                if entry.title.firstLetterUpperCase == sectionLetter {
+                    returnArray.append(entry)
+                }
+            }
+            return returnArray
+        }
+        let sectionsEntries = getAllEntryThatBeginWithLetter(sectionLetter)
+        return sectionsEntries.count
     }
     
     func addEntry(entry: Entry)
@@ -34,6 +58,7 @@ class EntryManager
         }
     }
     
+    // TODO ist falsch!!
     func headerForSection(section: Int) -> String
     {
         let title = entries[section].title

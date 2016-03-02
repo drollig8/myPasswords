@@ -78,6 +78,15 @@ class EntryManagerTests: XCTestCase
         XCTAssertEqual(sut.entryCountForSection(0), 2, "Entry cound after adding should be 1")
     }
     
+    func testNumberOfItemsInTwoSections()
+    {
+        sut.addEntry(Entry(title: "A-Title"))
+        sut.addEntry(Entry(title: "B-Title"))
+        sut.addEntry(Entry(title: "B-Title1"))
+        XCTAssertEqual(sut.entryCountForSection(0), 1, "Entry cound after adding should be 1")
+        XCTAssertEqual(sut.entryCountForSection(1), 2, "Entry cound after adding should be 1")
+    }
+    
     // MARK : - Other Stuff
     
     func testSUT_ReturnsSectionHeader()

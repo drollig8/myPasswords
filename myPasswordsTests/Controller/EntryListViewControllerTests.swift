@@ -9,7 +9,8 @@
 import XCTest
 @testable import myPasswords
 
-class EntryListViewControllerTests: XCTestCase {
+class EntryListViewControllerTests: XCTestCase
+{
     
     var sut: EntryListViewController!
     override func setUp()
@@ -18,6 +19,7 @@ class EntryListViewControllerTests: XCTestCase {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewControllerWithIdentifier("EntryListViewController") as! EntryListViewController
         _ = sut.view
+
     }
     
     override func tearDown()
@@ -27,6 +29,8 @@ class EntryListViewControllerTests: XCTestCase {
     
     func test_TableViewNotNil()
     {
+
+        
         XCTAssertNotNil(sut.tableView)
     }
     
@@ -40,63 +44,68 @@ class EntryListViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.tableView.delegate)
     }
     
-    func testSUT_HasAddBarButtonItemWithSelfAsTarget()
+    func testSUT_HasAddEntryBarButtonWithTargetSelf()
     {
         XCTAssertNotNil(sut.navigationItem.rightBarButtonItem?.target)
-        XCTAssertTrue(sut.navigationItem.rightBarButtonItem?.target === sut)
+        XCTAssertNotNil(sut.navigationItem.rightBarButtonItem?.target === self)
     }
     
-    func testSUT_PresentsAddEntryViewController()
+    func test_AddEntry_PresentsAddEntryVC()
     {
         XCTAssertNil(sut.presentedViewController)
-        guard let addButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
         
         UIApplication.sharedApplication().keyWindow?.rootViewController = sut
+        guard let addButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
         
-        sut.performSelector(addButton.action, withObject: addButton)
+        sut.performSelector(addButton.action, withObject: self)
         
         XCTAssertNotNil(sut.presentedViewController)
     }
     
-    func testSUT_PutsEntryManagerAtAddEntryViewController()
+    func test_AddEntryGetsEntryManagerSet()
     {
         XCTAssertNil(sut.presentedViewController)
+        
+        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
         guard let addButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
-        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
         
-        sut.performSelector(addButton.action, withObject: addButton)
+        sut.performSelector(addButton.action, withObject: self)
         
-        guard let addEntryViewController = sut.presentedViewController as? AddEntryViewController else {fatalError()}
+        XCTAssertNotNil(sut.presentedViewController)
         
-        XCTAssertTrue(addEntryViewController.entryManager === sut.entryManager)
+        guard let addEntryVC = sut.presentedViewController as? AddEntryViewController else {fatalError()}
+        
+        XCTAssertTrue(addEntryVC.entryManager === sut.entryManager)
     }
     
-    func testSUT_SetsItemManagerToDataProvider()
+    func testSUT_SetsEntryManagerToDataPRovider()
     {
-        XCTAssertTrue(sut.dataProvider.entryManager === sut.entryManager)
+        XCTAssertTrue(sut.entryManager === sut.dataprovider.entryManager)
     }
     
-    func testSelectedEntryNotification_PushesDetailViewController()
+    func testEntrySelectedNotifcation_pushesDetailViewController()
     {
-        let mockNavigationController = MockNavigationController(rootViewController: sut)
-        
-        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
+        let mockNC = mockNavigationcontroller(rootViewController: sut)
+        UIApplication.sharedApplication().keyWindow?.rootViewController = mockNC
         
         NSNotificationCenter.defaultCenter().postNotificationName("EntrySelectedNotification", object: nil, userInfo: ["index":1])
         
-        XCTAssertTrue(mockNavigationController.pushedViewController is DetailViewController)
+        XCTAssertTrue(mockNC.pushedVC is DetailViewController)
     }
+
+
 }
+
 
 extension EntryListViewControllerTests
 {
-    class MockNavigationController: UINavigationController
+    class mockNavigationcontroller: UINavigationController
     {
-        var pushedViewController : UIViewController!
+        var pushedVC: UIViewController!
         override func pushViewController(viewController: UIViewController, animated: Bool) {
-            pushedViewController = viewController
+            pushedVC = viewController
             super.pushViewController(viewController, animated: animated)
         }
     }
-}
 
+}

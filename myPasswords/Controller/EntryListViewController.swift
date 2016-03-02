@@ -10,34 +10,33 @@ import UIKit
 
 class EntryListViewController: UIViewController
 {
+
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var dataProvider: EntryListDataProvider!
+    @IBOutlet weak var dataprovider: EntryListDataProvider!
     
     var entryManager = EntryManager()
-    
     override func viewDidLoad()
     {
-        tableView.dataSource = dataProvider
-        tableView.delegate = dataProvider
-        dataProvider.entryManager = entryManager
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showDetails:", name: "EntrySelectedNotification", object: nil)
-    }
-    @IBAction func addEntry(sender: AnyObject)
-    {
-        let addEntryViewController = storyboard?.instantiateViewControllerWithIdentifier("AddEntryViewController") as! AddEntryViewController
-        addEntryViewController.entryManager = entryManager
-        presentViewController(addEntryViewController, animated: true, completion: nil)
+        tableView.dataSource = dataprovider
+        tableView.delegate = dataprovider
+        dataprovider.entryManager = entryManager
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showDetail:", name: "EntrySelectedNotification", object: nil)
     }
     
-    func showDetails(sender: NSNotification)
+    @IBAction func addEntry(sender: AnyObject)
     {
-        guard let index = sender.userInfo?["index"] as? Int else {fatalError()}
-        
-        if let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as? DetailViewController {
-            
-            //detailViewController.index = index
-            navigationController?.pushViewController(detailViewController, animated: true)
+        if let addEntryViewController = storyboard?.instantiateViewControllerWithIdentifier("AddEntryViewController") as? AddEntryViewController {
+            addEntryViewController.entryManager = entryManager
+            presentViewController(addEntryViewController, animated: true, completion: nil)
+        }
+    }
+
+
+    func showDetail(sender:NSNotification)
+    {
+        if let showDetailViewControll = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as? DetailViewController {
+            navigationController?.pushViewController(showDetailViewControll, animated: true)
         }
     }
 }

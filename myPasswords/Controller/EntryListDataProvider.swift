@@ -14,7 +14,7 @@ class EntryListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1
+        return entryManager.entryCountForSection(section)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -22,5 +22,11 @@ class EntryListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegat
         return UITableViewCell()
     }
     
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        let numberOfSections = entryManager.numberOfSections()
+        return numberOfSections
+    }
     
 }

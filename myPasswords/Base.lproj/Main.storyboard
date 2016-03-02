@@ -31,20 +31,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="r1t-JX-0nv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="b5R-8k-b0j">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YNO-gg-onM">
                             <connections>
-                                <action selector="addEntry:" destination="P25-Rk-0Sg" id="Amq-p8-AfZ"/>
+                                <action selector="addEntry:" destination="kWd-QT-KPH" id="e71-eb-rh9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="dataProvider" destination="ceN-3u-FSn" id="h6c-21-VpN"/>
-                        <outlet property="tableView" destination="1p3-Ae-0zm" id="68M-xG-qY6"/>
+                        <outlet property="dataprovider" destination="kWd-QT-KPH" id="GOX-5o-3bu"/>
+                        <outlet property="tableView" destination="1p3-Ae-0zm" id="mvv-Qn-YqS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1w-be-HLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="ceN-3u-FSn" customClass="EntryListDataProvider" customModule="myPasswords" customModuleProvider="target"/>
+                <customObject id="kWd-QT-KPH" customClass="EntryListDataProvider" customModule="myPasswords" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2146" y="567"/>
         </scene>
