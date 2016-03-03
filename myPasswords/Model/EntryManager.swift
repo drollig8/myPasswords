@@ -32,21 +32,22 @@ class EntryManager
         return sectionsLetters.count
     }
     
+    func getAllEntryThatBeginWithLetter(sectionLetter: String) -> [Entry] {
+        var returnArray = [Entry]()
+        for entry in entries {
+            if entry.title.firstLetterUpperCase == sectionLetter {
+                returnArray.append(entry)
+            }
+        }
+        return returnArray
+    }
     func entryCountForSection(section: Int) -> Int
     {
         let sectionLetters = getSectionLetters()
         guard sectionLetters.count > section else {return 0}
         let sectionLetter = sectionLetters[section]
         
-        func getAllEntryThatBeginWithLetter(sectionLetter: String) -> [Entry] {
-            var returnArray = [Entry]()
-            for entry in entries {
-                if entry.title.firstLetterUpperCase == sectionLetter {
-                    returnArray.append(entry)
-                }
-            }
-            return returnArray
-        }
+
         let sectionsEntries = getAllEntryThatBeginWithLetter(sectionLetter)
         return sectionsEntries.count
     }
@@ -63,6 +64,26 @@ class EntryManager
     {
         let title = entries[section].title
         return title.firstLetterUpperCase
+    }
+    
+    func entryAtIndexPath(indexPath: NSIndexPath) -> Entry
+    {
+       // var entries = [Entry]()
+        var sections = [[Entry]]()
+        
+        
+        let sectionLetters = getSectionLetters()
+        
+        for sectionLetter in sectionLetters {
+            let entries = getAllEntryThatBeginWithLetter(sectionLetter)
+            print(entries)
+            sections.append(entries)
+        }
+        
+        let section = indexPath.section
+        let row = indexPath.row
+        print(indexPath)
+        return sections[section][row]
     }
 }
 

@@ -12,13 +12,22 @@ import XCTest
 class EntryListDataProviderTests: XCTestCase {
     
     var sut: EntryListDataProvider!
+    var controller: EntryListViewController!
     var tableView: UITableView!
     override func setUp()
     {
         super.setUp()
+        
         sut = EntryListDataProvider()
-        tableView = UITableView()
         sut.entryManager = EntryManager()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        controller = storyboard.instantiateViewControllerWithIdentifier("EntryListViewController") as! EntryListViewController
+        _ = controller.view
+        tableView = controller.tableView
+        assert(tableView != nil)
+        tableView.dataSource = sut
+       
     }
     
     override func tearDown()
@@ -56,39 +65,62 @@ class EntryListDataProviderTests: XCTestCase {
         
        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
             inSection: 0))
-        
         XCTAssertTrue(cell is EntryCell)
     }
     
-    func testCellForRow_DequeuesCell() {
+    func testCellForRow_DequeuesCell()
+    {
         
-        let mockTableView = MockTableView.mockTableViewWithDataSource(sut)
+        let mockTableView = MockTableView(frame: CGRect(x: 0, y: 0, width: 100, height: 200), style: .Plain)
+        mockTableView.dataSource = sut
         
-     /*   sut.itemManager?.addItem(ToDoItem(title: "First"))
+        mockTableView.registerClass(EntryCell.self, forCellReuseIdentifier: "Cell")
+      
+        sut.entryManager.addEntry(Entry(title: "A-Title"))
+        
         mockTableView.reloadData()
         
-        _ = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
-            inSection: 0))
-        
+        let cell = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+
         XCTAssertTrue(mockTableView.cellGotDequeued)
-*/
     }
-    /*
-    func testConfigCell_GetsCalledInCellForRow() {
+    
+    
+    func testConfigCell_GetsCalledInCellForRow()
+    {
         
-        let mockTableView = MockTableView.mockTableViewWithDataSource(sut)
+        let mockTableView = MockTableView()//frame: CGRect(x: 0, y: 0, width: 100, height: 200), style: .Plain)
         
-        let toDoItem = ToDoItem(title: "First",
-            itemDescription: "First description")
-        sut.itemManager?.addItem(toDoItem)
+        mockTableView.dataSource = sut
+        mockTableView.registerClass(MockTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let firstEntry = Entry(title: "A-Title")
+
+        sut.entryManager.addEntry(firstEntry)
+        
         mockTableView.reloadData()
+        
+        
+        
+        
         
         let cell = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
-            inSection: 0)) as! MockItemCell
-        
-        XCTAssertEqual(cell.toDoItem, toDoItem)
+            inSection: 0)) as! MockTableViewCell
+        XCTAssertTrue(cell.configCellGotCalled)
+ //       XCTAssertEqual(cell.entry, firstEntry)
     }
-*/
+
+    func testSelectingACell_SendsNotifcation()
+    {
+        sut.entryManager.addEntry(Entry(title: "test"	))
+        
+        
+        expectationForNotification("EntrySelectedNotifcation", object: nil) { (notification) -> Bool in
+            guard let index = notification.userInfo?["index"] as? Int else {fatalError()}
+            return index == 0
+        }
+        tableView.delegate?.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        waitForExpectationsWithTimeout(3, handler: nil)
+    }
 
 
 }
@@ -97,13 +129,22 @@ extension EntryListDataProviderTests
 {
     class MockTableView:UITableView
     {
+        var cellGotDequeued = false
         
-        override func numberOfRowsInSection(section: Int) -> Int {
-            return 1
+        override func dequeueReusableCellWithIdentifier(identifier: String, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            cellGotDequeued = true
+            return super.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
         }
-        
-        override func cellForRowAtIndexPath(indexPath: NSIndexPath) -> UITableViewCell? {
-            return UITableViewCell()
+    }
+    
+    class MockTableViewCell: EntryCell
+    {
+        var configCellGotCalled = false
+        var entry : Entry!
+        override func configCellWithEntry(entry: Entry)
+        {
+            self.entry = entry
+            configCellGotCalled = true
         }
     }
 }

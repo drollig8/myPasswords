@@ -102,6 +102,24 @@ class EntryManagerTests: XCTestCase
         XCTAssertEqual(sut.entryCountForSection(0), 1, "Entry cound after adding should be 1")
     }
     
+    func testSUT_ReturnsEntryAtIndexPath()
+    {
+        let entry1 = Entry(title: "A-Title")
+        let entry2 = Entry(title: "B-Title")
+        let entry3 = Entry(title: "B-Title1")
+        sut.addEntry(entry1)
+        sut.addEntry(entry2)
+        sut.addEntry(entry3)
+  
+        print(sut.entryAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)))
+        
+        XCTAssertEqual(sut.entryAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)), entry1)
+        XCTAssertEqual(sut.entryAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)), entry2)
+        XCTAssertEqual(sut.entryAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)), entry3)
+
+        
+    }
+    
     // MARK: - remove Item
 
 

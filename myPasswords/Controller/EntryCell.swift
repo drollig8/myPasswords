@@ -11,5 +11,11 @@ import UIKit
 class EntryCell: UITableViewCell
 {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var loginLabel: UILabel!
+    
+    func configCellWithEntry(entry: Entry)
+    {
+        
+    }
     
 }

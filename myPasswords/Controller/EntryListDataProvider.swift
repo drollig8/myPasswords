@@ -12,14 +12,19 @@ class EntryListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegat
 {
     var entryManager: EntryManager!
     
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return entryManager.entryCountForSection(section)
+        let numberOfEntries = entryManager.entryCountForSection(section)
+        return numberOfEntries
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        return EntryCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EntryCell
+    //    let entry = entryManager.entryAtIndexPath(indexPath)
+        cell.configCellWithEntry(Entry(title: ""))
+        return cell
     }
     
 
@@ -28,5 +33,11 @@ class EntryListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegat
         let numberOfSections = entryManager.numberOfSections()
         return numberOfSections
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        NSNotificationCenter.defaultCenter().postNotificationName("EntrySelectedNotifcation", object: self, userInfo: ["index":indexPath.row])
+    }
+    
     
 }
