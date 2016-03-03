@@ -11,9 +11,14 @@ import XCTest
 
 class EntryListDataProviderTests: XCTestCase {
     
+    var sut: EntryListDataProvider!
+    var tableView: UITableView!
     override func setUp()
     {
         super.setUp()
+        sut = EntryListDataProvider()
+        tableView = UITableView()
+        sut.entryManager = EntryManager()
     }
     
     override func tearDown()
@@ -23,9 +28,8 @@ class EntryListDataProviderTests: XCTestCase {
     
     func testNumberOfSections_IsNumberOfDifferentFirstLetter()
     {
-        let sut = EntryListDataProvider()
-        let tableView = UITableView()
-        sut.entryManager = EntryManager()
+
+        
         sut.entryManager.addEntry(Entry(title: "A-Title"))
         sut.entryManager.addEntry(Entry(title: "B-Title"))
         let numberOfSections = sut.numberOfSectionsInTableView(tableView)
@@ -36,9 +40,6 @@ class EntryListDataProviderTests: XCTestCase {
     
     func testNumberOfRowsInFirstSections_IsNumberEntries()
     {
-        let sut = EntryListDataProvider()
-        let tableView = UITableView()
-        sut.entryManager = EntryManager()
         sut.entryManager.addEntry(Entry(title: "A-Title"))
         sut.entryManager.addEntry(Entry(title: "B-Title"))
         sut.entryManager.addEntry(Entry(title: "B-Title1"))
@@ -47,7 +48,63 @@ class EntryListDataProviderTests: XCTestCase {
         XCTAssertEqual(numberOfSections0, 1)
         XCTAssertEqual(numberOfSections1, 2)
     }
+    
+    func testCellForRow_ReturnsItemCell() {
+        
+        sut.entryManager.addEntry(Entry(title: "A-Title"))
+        tableView.reloadData()
+        
+       let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+            inSection: 0))
+        
+        XCTAssertTrue(cell is EntryCell)
+    }
+    
+    func testCellForRow_DequeuesCell() {
+        
+        let mockTableView = MockTableView.mockTableViewWithDataSource(sut)
+        
+     /*   sut.itemManager?.addItem(ToDoItem(title: "First"))
+        mockTableView.reloadData()
+        
+        _ = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+            inSection: 0))
+        
+        XCTAssertTrue(mockTableView.cellGotDequeued)
+*/
+    }
+    /*
+    func testConfigCell_GetsCalledInCellForRow() {
+        
+        let mockTableView = MockTableView.mockTableViewWithDataSource(sut)
+        
+        let toDoItem = ToDoItem(title: "First",
+            itemDescription: "First description")
+        sut.itemManager?.addItem(toDoItem)
+        mockTableView.reloadData()
+        
+        let cell = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
+            inSection: 0)) as! MockItemCell
+        
+        XCTAssertEqual(cell.toDoItem, toDoItem)
+    }
+*/
+
 
 }
 
+extension EntryListDataProviderTests
+{
+    class MockTableView:UITableView
+    {
+        
+        override func numberOfRowsInSection(section: Int) -> Int {
+            return 1
+        }
+        
+        override func cellForRowAtIndexPath(indexPath: NSIndexPath) -> UITableViewCell? {
+            return UITableViewCell()
+        }
+    }
+}
 

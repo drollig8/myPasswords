@@ -16,6 +16,7 @@
 		6E1A89451C86829400E433B2 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89441C86829400E433B2 /* Entry.swift */; };
 		6E1A89491C86875800E433B2 /* EntryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89481C86875800E433B2 /* EntryManagerTests.swift */; };
 		6E1A894B1C86876600E433B2 /* EntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A894A1C86876600E433B2 /* EntryManager.swift */; };
+		6E1A894D1C87A51000E433B2 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A894C1C87A51000E433B2 /* EntryCell.swift */; };
 		6E9774101C86CBB5000303B2 /* EntryListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E97740F1C86CBB5000303B2 /* EntryListDataProviderTests.swift */; };
 		6E9774121C86CBC7000303B2 /* EntryListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9774111C86CBC7000303B2 /* EntryListDataProvider.swift */; };
 		6E9774181C86EDC2000303B2 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */; };
@@ -48,6 +49,7 @@
 		6E1A89441C86829400E433B2 /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Entry.swift; path = Model/Entry.swift; sourceTree = "<group>"; };
 		6E1A89481C86875800E433B2 /* EntryManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryManagerTests.swift; path = Model/EntryManagerTests.swift; sourceTree = "<group>"; };
 		6E1A894A1C86876600E433B2 /* EntryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryManager.swift; path = Model/EntryManager.swift; sourceTree = "<group>"; };
+		6E1A894C1C87A51000E433B2 /* EntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryCell.swift; path = Controller/EntryCell.swift; sourceTree = "<group>"; };
 		6E97740F1C86CBB5000303B2 /* EntryListDataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryListDataProviderTests.swift; path = Controller/EntryListDataProviderTests.swift; sourceTree = "<group>"; };
 		6E9774111C86CBC7000303B2 /* EntryListDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryListDataProvider.swift; path = Controller/EntryListDataProvider.swift; sourceTree = "<group>"; };
 		6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEntryViewController.swift; path = Controller/AddEntryViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */,
 				6E9774191C86FC5C000303B2 /* DetailViewController.swift */,
 				6E97741D1C873A09000303B2 /* EntryListViewController.swift */,
+				6E1A894C1C87A51000E433B2 /* EntryCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				6E1A89451C86829400E433B2 /* Entry.swift in Sources */,
 				6E1A89231C867E2900E433B2 /* ViewController.swift in Sources */,
 				6E9774181C86EDC2000303B2 /* AddEntryViewController.swift in Sources */,
+				6E1A894D1C87A51000E433B2 /* EntryCell.swift in Sources */,
 				6E1A894B1C86876600E433B2 /* EntryManager.swift in Sources */,
 				6E97741E1C873A09000303B2 /* EntryListViewController.swift in Sources */,
 				6E1A89211C867E2900E433B2 /* AppDelegate.swift in Sources */,

@@ -19,7 +19,7 @@ class EntryListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        return UITableViewCell()
+        return EntryCell()
     }
     
 
