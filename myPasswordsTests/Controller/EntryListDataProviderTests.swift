@@ -18,6 +18,7 @@ class EntryListDataProviderTests: XCTestCase {
         super.setUp()
         sut = EntryListDataProvider()
         tableView = UITableView()
+        tableView.dataSource = sut
         sut.entryManager = EntryManager()
     }
     
@@ -54,6 +55,7 @@ class EntryListDataProviderTests: XCTestCase {
         sut.entryManager.addEntry(Entry(title: "A-Title"))
         tableView.reloadData()
         
+       
        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
             inSection: 0))
         
@@ -62,7 +64,7 @@ class EntryListDataProviderTests: XCTestCase {
     
     func testCellForRow_DequeuesCell() {
         
-        let mockTableView = MockTableView.mockTableViewWithDataSource(sut)
+  //      let mockTableView = MockTableView.mockTableViewWithDataSource(sut)
         
      /*   sut.itemManager?.addItem(ToDoItem(title: "First"))
         mockTableView.reloadData()
