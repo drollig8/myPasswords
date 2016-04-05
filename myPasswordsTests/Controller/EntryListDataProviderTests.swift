@@ -63,6 +63,7 @@ class EntryListDataProviderTests: XCTestCase {
         sut.entryManager.addEntry(Entry(title: "A-Title"))
         tableView.reloadData()
         
+       
        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
             inSection: 0))
         XCTAssertTrue(cell is EntryCell)
