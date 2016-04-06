@@ -40,6 +40,18 @@ class EntryCellTests: XCTestCase
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! EntryCell
         XCTAssertNotNil(cell.loginLabel)
     }
+    
+    
+    
+    func testConfigWithItem_SetsLabelText()
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! EntryCell
+        cell.configCellWithEntry(Entry(title: "Test123", loginName: "mfelden", password: "willrein", url: "madeTK.com", remarks: "Dies ist ein Test"))
+        XCTAssertEqual(cell.titleLabel.text, "Test123")
+        XCTAssertEqual(cell.loginLabel.text, "mfelden")
+        
+    }
+ 
 }
 
 extension EntryCellTests

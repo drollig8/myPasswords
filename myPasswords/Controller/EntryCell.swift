@@ -15,7 +15,8 @@ class EntryCell: UITableViewCell
     
     func configCellWithEntry(entry: Entry)
     {
-        
+        titleLabel.text = entry.title
+        loginLabel.text = entry.loginName
     }
     
 }
