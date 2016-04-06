@@ -29,6 +29,16 @@ class EntryCellTests: XCTestCase
         super.tearDown()
     }
     
+    /*
+    func testConfigureCell_SetsName() {
+        cell.configureCellWithItem(Actor(name: "test333", state: "off", imageName: nil))
+        XCTAssertEqual(cell.textLabel.text,"test333")
+    }
+ */
+ 
+ 
+    
+    /*
     func testSUT_HasTitleLabel()
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! EntryCell
@@ -40,6 +50,24 @@ class EntryCellTests: XCTestCase
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! EntryCell
         XCTAssertNotNil(cell.loginLabel)
     }
+    
+    func testConfigWithItem_SetsTitelLabelTexts() {
+
+
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(
+            "Cell",
+            forIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! EntryCell
+     
+        cell.config
+        cell.configCellWithItem(ToDoItem(title: "First", itemDescription: nil, timestamp: 1456150025, location: Location(name: "Home")))
+        XCTAssertEqual(cell.titleLabel.text, "First")
+        XCTAssertEqual(cell.locationLabel.text, "Home")
+        XCTAssertEqual(cell.dateLabel.text, "02/22/2016")
+ 
+    }
+ 
+ */
 }
 
 extension EntryCellTests

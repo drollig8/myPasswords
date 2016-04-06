@@ -21,10 +21,21 @@ class EntryListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! EntryCell
+   
+        return EntryCell()
+        /*
+        tableView.registerClass(EntryCell.self, forCellReuseIdentifier: "Cell")
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as? EntryCell
+        
+        if cell == nil {
+           cell = EntryCell(style: UITableViewCellStyle, reuseIdentifier: "Cell")
+        }
+        
     //    let entry = entryManager.entryAtIndexPath(indexPath)
         cell.configCellWithEntry(Entry(title: ""))
         return cell
+ */
     }
     
 

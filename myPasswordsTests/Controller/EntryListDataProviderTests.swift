@@ -69,6 +69,7 @@ class EntryListDataProviderTests: XCTestCase {
         XCTAssertTrue(cell is EntryCell)
     }
     
+    
     func testCellForRow_DequeuesCell()
     {
         
@@ -85,7 +86,7 @@ class EntryListDataProviderTests: XCTestCase {
 
         XCTAssertTrue(mockTableView.cellGotDequeued)
     }
-    
+    /*
     
     func testConfigCell_GetsCalledInCellForRow()
     {
@@ -109,6 +110,7 @@ class EntryListDataProviderTests: XCTestCase {
         XCTAssertTrue(cell.configCellGotCalled)
  //       XCTAssertEqual(cell.entry, firstEntry)
     }
+ */
 
     func testSelectingACell_SendsNotifcation()
     {

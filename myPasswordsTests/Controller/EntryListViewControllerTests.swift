@@ -29,8 +29,6 @@ class EntryListViewControllerTests: XCTestCase
     
     func test_TableViewNotNil()
     {
-
-        
         XCTAssertNotNil(sut.tableView)
     }
     
@@ -42,6 +40,11 @@ class EntryListViewControllerTests: XCTestCase
     func testViewDidLoad_SetsDelegate()
     {
         XCTAssertNotNil(sut.tableView.delegate)
+    }
+
+    func testViewDidLoad_RegistersCellClass()
+    {
+        
     }
     
     func testSUT_HasAddEntryBarButtonWithTargetSelf()
