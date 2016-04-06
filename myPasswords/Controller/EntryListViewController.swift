@@ -11,32 +11,37 @@ import UIKit
 class EntryListViewController: UIViewController
 {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var dataprovider: EntryListDataProvider!
-    
+    var tableView: UITableView!
+    var dataprovider: EntryListDataProvider!
     var entryManager = EntryManager()
+    
     override func viewDidLoad()
     {
+        tableView = UITableView(frame: self.view.frame, style: .Grouped)
+        self.view.addSubview(tableView)
         tableView.dataSource = dataprovider
         tableView.delegate = dataprovider
+        tableView.registerClass(EntryCell.classForCoder(), forCellReuseIdentifier: "Cell")
         dataprovider.entryManager = entryManager
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addEntry(_:)))
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showDetail:", name: "EntrySelectedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showDetail(_:)), name: "EntrySelectedNotification", object: nil)
     }
     
-    @IBAction func addEntry(sender: AnyObject)
+    func addEntry(sender: AnyObject)
     {
-        if let addEntryViewController = storyboard?.instantiateViewControllerWithIdentifier("AddEntryViewController") as? AddEntryViewController {
-            addEntryViewController.entryManager = entryManager
-            presentViewController(addEntryViewController, animated: true, completion: nil)
-        }
+        let addEntryViewController = AddEntryViewController()
+        addEntryViewController.entryManager = entryManager
+        presentViewController(addEntryViewController, animated: true, completion: nil)
+        
+    
     }
-
 
     func showDetail(sender:NSNotification)
     {
-        if let showDetailViewControll = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as? DetailViewController {
-            navigationController?.pushViewController(showDetailViewControll, animated: true)
-        }
+        let showDetailViewControll =  DetailViewController()
+        navigationController?.pushViewController(showDetailViewControll, animated: true)
+        
     }
 }
