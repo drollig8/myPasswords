@@ -32,11 +32,6 @@ class EntryCellTests: XCTestCase
     func testSUT_HasTitleLabel()
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! EntryCell
-        
-        // warum geht das nicht folgendermaßen?
-        
-        // let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! EntryCell
-        //let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! EntryCell
         XCTAssertNotNil(cell.titleLabel)
     }
     
