@@ -15,6 +15,7 @@ class EntryListViewController: UIViewController
     @IBOutlet weak var dataprovider: EntryListDataProvider!
     
     var entryManager = EntryManager()
+    
     override func viewDidLoad()
     {
     
@@ -26,23 +27,23 @@ class EntryListViewController: UIViewController
         dataprovider.entryManager   = entryManager
         
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showDetail:", name: "EntrySelectedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showDetail(_:)), name: "EntrySelectedNotification", object: nil)
     }
     
-    @IBAction func addEntry(sender: AnyObject)
+    func addEntry(sender: AnyObject)
     {
-        if let addEntryViewController = storyboard?.instantiateViewControllerWithIdentifier("AddEntryViewController") as? AddEntryViewController {
-            addEntryViewController.entryManager = entryManager
-            presentViewController(addEntryViewController, animated: true, completion: nil)
-        }
+        let addEntryViewController = AddEntryViewController()
+        addEntryViewController.entryManager = entryManager
+        presentViewController(addEntryViewController, animated: true, completion: nil)
+        
+    
     }
-
 
     func showDetail(sender:NSNotification)
     {
-        if let showDetailViewControll = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as? DetailViewController {
-            navigationController?.pushViewController(showDetailViewControll, animated: true)
-        }
+        let showDetailViewControll =  DetailViewController()
+        navigationController?.pushViewController(showDetailViewControll, animated: true)
+        
     }
 }
 

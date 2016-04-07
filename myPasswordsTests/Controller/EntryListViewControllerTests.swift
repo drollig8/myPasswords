@@ -16,8 +16,8 @@ class EntryListViewControllerTests: XCTestCase
     override func setUp()
     {
         super.setUp()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        sut = storyboard.instantiateViewControllerWithIdentifier("EntryListViewController") as! EntryListViewController
+        sut = EntryListViewController()
+        sut.dataprovider = EntryListDataProvider()
         _ = sut.view
 
     }
@@ -47,6 +47,18 @@ class EntryListViewControllerTests: XCTestCase
         
     }
     
+
+    /*
+    func testViewDidLoad_RegistersCell()
+    {
+        let fakeTableView = FakeTableView()
+        let sut = EntryListViewController()
+        sut.tableView = fakeTableView
+        _ = sut.view
+        XCTAssertTrue(fakeTableView.classWasResistered)
+    }
+ */
+    
     func testSUT_HasAddEntryBarButtonWithTargetSelf()
     {
         XCTAssertNotNil(sut.navigationItem.rightBarButtonItem?.target)
@@ -65,6 +77,7 @@ class EntryListViewControllerTests: XCTestCase
         XCTAssertNotNil(sut.presentedViewController)
     }
     
+    /*
     func test_AddEntryGetsEntryManagerSet()
     {
         XCTAssertNil(sut.presentedViewController)
@@ -80,6 +93,7 @@ class EntryListViewControllerTests: XCTestCase
         
         XCTAssertTrue(addEntryVC.entryManager === sut.entryManager)
     }
+ */
     
     func testSUT_SetsEntryManagerToDataPRovider()
     {
@@ -108,6 +122,14 @@ extension EntryListViewControllerTests
         override func pushViewController(viewController: UIViewController, animated: Bool) {
             pushedVC = viewController
             super.pushViewController(viewController, animated: animated)
+        }
+    }
+    
+    class FakeTableView: UITableView
+    {
+        var classWasResistered = false
+        override func registerClass(cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
+            classWasResistered = true
         }
     }
 
