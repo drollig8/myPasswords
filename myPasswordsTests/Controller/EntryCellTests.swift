@@ -56,5 +56,6 @@ class EntryCellTests: XCTestCase
         XCTAssertEqual(cell.loginLabel.text, "mfelden")
         
     }
+ */
  
 }

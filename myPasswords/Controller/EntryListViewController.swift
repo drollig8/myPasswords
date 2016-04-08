@@ -15,14 +15,20 @@ class EntryListViewController: UIViewController
     var dataprovider: EntryListDataProvider!
     var entryManager = EntryManager()
     
+    override func viewDidLoad()
+    {
+        if tableView == nil {
+            tableView = UITableView(frame: self.view.frame, style: .Grouped)
+        }
+        self.view.addSubview(tableView)
         tableView.dataSource = dataprovider
         tableView.delegate = dataprovider
+        print("-----------------------")
+        print("TableView set in viewDidLoad: \(tableView)")
+        print("-----------------------")
         tableView.registerClass(EntryCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        assert(dataprovider != nil)
         dataprovider.entryManager = entryManager
-    {
-        tableView = UITableView(frame: self.view.frame, style: .Grouped)
-        self.view.addSubview(tableView)
-        dataprovider.entryManager   = entryManager
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addEntry(_:)))
 
@@ -45,47 +51,3 @@ class EntryListViewController: UIViewController
         
     }
 }
-
-/*  UITABLEVIEW PROGRAMMATICALLY
- 
-import UIKit
-
-class ViewController1: UIViewController, UITableViewDelegate,UITableViewDataSource {
-    var tableView: UITableView  =   UITableView()
-    let animals : [String] = ["Dogs","Cats","Mice"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
-        tableView.delegate      =   self
-        tableView.dataSource    =   self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.view.addSubview(self.tableView)
-        
-        
-    }
-    
-    
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return animals.count
-        
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        
-        let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
-        cell.textLabel!.text = animals [indexPath.row]
-        return cell;
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        print(animals[indexPath.row])
-        
-    }
-}
- */

@@ -44,6 +44,13 @@ class EntryListViewControllerTests: XCTestCase
 
     func testViewDidLoad_RegistersCellClass()
     {
+        let fakeTableView = FakeTableView()
+        let sut = EntryListViewController()
+        sut.dataprovider = EntryListDataProvider()
+        sut.tableView = fakeTableView
+        _ = sut.view
+        print(fakeTableView)
+        XCTAssertTrue(fakeTableView.classWasResistered)
         
     }
     
@@ -52,16 +59,7 @@ class EntryListViewControllerTests: XCTestCase
         XCTAssertEqual(sut.tableView.dataSource as? EntryListDataProvider, sut.tableView.delegate as? EntryListDataProvider)
     }
 
-    /*
-    func testViewDidLoad_RegistersCell()
-    {
-        let fakeTableView = FakeTableView()
-        let sut = EntryListViewController()
-        sut.tableView = fakeTableView
-        _ = sut.view
-        XCTAssertTrue(fakeTableView.classWasResistered)
-    }
- */
+
     
     func testSUT_HasAddEntryBarButtonWithTargetSelf()
     {
@@ -89,8 +87,8 @@ class EntryListViewControllerTests: XCTestCase
         sut.performSelector(addButton.action, withObject: addButton)
         XCTAssertNotNil(sut.presentedViewController)
         
-        XCTAssertTrue(sut.presentedViewController is InputViewController)
-        guard let inputEntryManager = sut.presentedViewController as! InputViewController
+        XCTAssertTrue(sut.presentedViewController is AddEntryViewController)
+        guard let addEntryManager = sut.presentedViewController as? AddEntryViewController else {fatalError()}
         
     }
     

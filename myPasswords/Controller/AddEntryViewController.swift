@@ -11,12 +11,22 @@ import UIKit
 
 class AddEntryViewController: UIViewController
 {
-    @IBOutlet weak var titleTextField: UITextField!
+    
+    var titleTextField: UITextField!
     
     var entryManager: EntryManager?
     
     override func viewDidLoad()
     {
+        
+        self.view.backgroundColor = UIColor.greenColor()
+        let width = self.view.frame.width
+        let standardHeight:CGFloat = 30
+        
+        titleTextField = UITextField(frame: CGRect(x: 10, y: 10, width: width, height: standardHeight))
+        
+        self.view.addSubview(titleTextField)
+        
         
     }
 }
