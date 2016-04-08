@@ -42,6 +42,10 @@ class EntryListViewControllerTests: XCTestCase
         XCTAssertNotNil(sut.tableView.delegate)
     }
     
+    func testViewDidLoad_ShouldSetTableViewDelegateAndDataSourceToSameObject()
+    {
+        XCTAssertEqual(sut.tableView.dataSource as? EntryListDataProvider, sut.tableView.delegate as? EntryListDataProvider)
+    }
 
     /*
     func testViewDidLoad_RegistersCell()
@@ -70,6 +74,19 @@ class EntryListViewControllerTests: XCTestCase
         sut.performSelector(addButton.action, withObject: self)
         
         XCTAssertNotNil(sut.presentedViewController)
+    }
+    
+    func testEntryListVC_SharesEntryManagerWithInputVC()
+    {
+        XCTAssertNil(sut.presentedViewController)
+        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
+        guard let addButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
+        sut.performSelector(addButton.action, withObject: addButton)
+        XCTAssertNotNil(sut.presentedViewController)
+        
+        XCTAssertTrue(sut.presentedViewController is InputViewController)
+        guard let inputEntryManager = sut.presentedViewController as! InputViewController
+        
     }
     
     /*

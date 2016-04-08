@@ -6,12 +6,66 @@
 //  Copyright © 2016 madeTK.com. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class EntryManager
+class EntryManager:NSObject
 {
 
     private var entries = [Entry]()
+    
+    // to save we need
+    
+    var entryPathURL: NSURL
+    {
+        let fileURLs = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        guard let documentURL = fileURLs.first else { fatalError() }
+        return documentURL.URLByAppendingPathComponent("entryList.plist")
+    }
+    
+    
+    override init()
+    {
+        super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(save), name: UIApplicationWillResignActiveNotification, object: nil)
+        if let nsEntryItems = NSArray(contentsOfURL: entryPathURL) {
+            for dict in nsEntryItems {
+                if let entryItem = Entry(dict: dict as! NSDictionary) {
+                    entries.append(entryItem)
+                }
+            }
+        }
+    }
+    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        save()
+    }
+    
+    func save()
+    {
+        var nsEntryItems = [AnyObject]()
+        for entry in entries {
+            nsEntryItems.append(entry.plistDict)
+        }
+        if nsEntryItems.count > 0 {
+            (nsEntryItems as NSArray).writeToURL(entryPathURL, atomically: true)
+        } else {
+            do {
+                try NSFileManager.defaultManager().removeItemAtURL(entryPathURL)
+            } catch {
+                print(error)
+            }
+        }
+    
+    }
+    
+    func removeAllItems()
+    {
+        entries.removeAll()
+    }
+    
     
     private func getSectionLetters() -> [String]
     {
@@ -71,18 +125,15 @@ class EntryManager
        // var entries = [Entry]()
         var sections = [[Entry]]()
         
-        
         let sectionLetters = getSectionLetters()
         
         for sectionLetter in sectionLetters {
             let entries = getAllEntryThatBeginWithLetter(sectionLetter)
-            print(entries)
             sections.append(entries)
         }
         
         let section = indexPath.section
         let row = indexPath.row
-        print(indexPath)
         return sections[section][row]
     }
 }

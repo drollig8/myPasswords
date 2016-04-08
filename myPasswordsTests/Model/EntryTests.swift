@@ -70,11 +70,15 @@ class EntryTests: XCTestCase {
         
         XCTAssertFalse(firstEntry == secondEntry)
     }
+    
+    func test_CanBeCreatedFromPlistDictionary() {
+        
+        let entry = Entry(title: "Titel", loginName: "TestName", password: "Password", url: "url", remarks: "remarks")
+        
+        let dict = entry.plistDict
+        let recratedItem = Entry(dict: dict)
+        
+        XCTAssertEqual(entry, recratedItem)
+    }
 
 }
-/*
-
-@NSManaged var url: String?
-@NSManaged var remarks: String?
-@NSManaged var section: String?
-*/
