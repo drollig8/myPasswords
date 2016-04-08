@@ -46,28 +46,9 @@ class EntryCellTests: XCTestCase
         XCTAssertNotNil(cell.loginLabel)
     }
     
-    func testConfigWithItem_SetsTitelLabelTexts() {
-
-
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(
-            "Cell",
-            forIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! EntryCell
-     
-        cell.config
-        cell.configCellWithItem(ToDoItem(title: "First", itemDescription: nil, timestamp: 1456150025, location: Location(name: "Home")))
-        XCTAssertEqual(cell.titleLabel.text, "First")
-        XCTAssertEqual(cell.locationLabel.text, "Home")
-        XCTAssertEqual(cell.dateLabel.text, "02/22/2016")
- 
-    }
- 
- */
-}
-
-extension EntryCellTests
-{
-    class FakeDataSource: NSObject, UITableViewDataSource
+    
+    
+    func testConfigWithItem_SetsLabelText()
     {
 
         cell.configCellWithEntry(Entry(title: "Test123", loginName: "mfelden", password: "willrein", url: "madeTK.com", remarks: "Dies ist ein Test"))

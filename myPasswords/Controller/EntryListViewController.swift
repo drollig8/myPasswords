@@ -12,20 +12,19 @@ class EntryListViewController: UIViewController
 {
 
     var tableView: UITableView!
-    @IBOutlet weak var dataprovider: EntryListDataProvider!
-    
+    var dataprovider: EntryListDataProvider!
     var entryManager = EntryManager()
     
-    override func viewDidLoad()
+        tableView.dataSource = dataprovider
+        tableView.delegate = dataprovider
+        tableView.registerClass(EntryCell.classForCoder(), forCellReuseIdentifier: "Cell")
+        dataprovider.entryManager = entryManager
     {
-    
-        tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: .Grouped)
-        tableView.dataSource        = dataprovider
-        tableView.delegate          = dataprovider
-        tableView.registerClass(EntryCell.self, forCellReuseIdentifier: "Cell")
+        tableView = UITableView(frame: self.view.frame, style: .Grouped)
         self.view.addSubview(tableView)
         dataprovider.entryManager   = entryManager
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addEntry(_:)))
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showDetail(_:)), name: "EntrySelectedNotification", object: nil)
     }
