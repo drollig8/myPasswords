@@ -76,6 +76,26 @@ class EntryListViewControllerTests: XCTestCase
         XCTAssertNotNil(sut.presentedViewController)
     }
     
+    func test_AddEntry_IsEmbeddedInNavigationController() {
+        
+        XCTAssertNil(sut.presentedViewController)
+        
+        UIApplication.sharedApplication().keyWindow?.rootViewController = sut
+        guard let addButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
+        
+        sut.performSelector(addButton.action, withObject: self)
+        
+        XCTAssertNotNil(sut.presentedViewController)
+        
+       // XCTAssertTrue(sut.presentedViewController is AddEntryViewController)
+        XCTAssertTrue(sut.presentedViewController is UINavigationController)
+        let navigationController = sut.presentedViewController as? UINavigationController
+        XCTAssertNotNil(navigationController)
+    }
+    
+    
+    
+    /*
     func testEntryListVC_SharesEntryManagerWithInputVC()
     {
         XCTAssertNil(sut.presentedViewController)
@@ -88,6 +108,7 @@ class EntryListViewControllerTests: XCTestCase
         guard let inputEntryManager = sut.presentedViewController as! InputViewController
         
     }
+ */
     
     /*
     func test_AddEntryGetsEntryManagerSet()

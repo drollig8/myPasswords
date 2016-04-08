@@ -33,7 +33,9 @@ class EntryListViewController: UIViewController
     {
         let addEntryViewController = AddEntryViewController()
         addEntryViewController.entryManager = entryManager
-        presentViewController(addEntryViewController, animated: true, completion: nil)
+        
+        let navigationController = UINavigationController(rootViewController: addEntryViewController)
+        presentViewController(navigationController, animated: true, completion: nil)
         
     
     }
