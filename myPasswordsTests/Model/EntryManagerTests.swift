@@ -11,17 +11,18 @@ import XCTest
 
 class EntryManagerTests: XCTestCase
 {
-    
     var sut: EntryManager!
+    
     override func setUp()
     {
         super.setUp()
         sut = EntryManager()
-        
     }
     
     override func tearDown()
     {
+        sut.removeAllItems()
+        sut = nil
         super.tearDown()
     }
     
@@ -122,7 +123,32 @@ class EntryManagerTests: XCTestCase
     
     // MARK: - remove Item
 
+    func testEntriesGetSerialized()
+    {
+        var entryManager:EntryManager? = EntryManager()  // we will later set this to nil
+        
+        let firstEntry = Entry(title: "A-Title")
+        let secondEntry = Entry(title: "A1-Title")
+        
+        entryManager!.addEntry(firstEntry)
+        entryManager!.addEntry(secondEntry)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(
+            UIApplicationWillResignActiveNotification, object: nil)
+        
+        entryManager = nil
+        
+        XCTAssertNil(entryManager)
 
+        entryManager = EntryManager()
+        
+        XCTAssertEqual(entryManager?.entryCountForSection(0), 2)
+  //      XCTAssertEqual(entryManager?.entryAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)), firstEntry)
+ //       XCTAssertEqual(entryManager?.entryAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)), secondEntry)
+        
+        
+    }
+    
 
 }
 
