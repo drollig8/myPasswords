@@ -57,19 +57,43 @@ class AddEntryViewController: UIViewController
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancel))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(save))
         
         self.view.backgroundColor = UIColor.whiteColor()
     }
     
     func cancel()
     {
-        self.dis
-        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func save()
     {
-        
+        if passwordTextField1.text == passwordTextField2.text {
+            let title = titleTextField.text ?? ""
+            
+            let login = loginTextField.text
+            let password = passwordTextField1.text
+            let url = uRLTextField.text
+            let remark = remarkTextField.text
+            let entry = Entry(title: title, loginName: login, password: password, url: url, remarks: remark)
+            self.entryManager?.addEntry(entry)
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Titel", message: "Message", preferredStyle: .Alert)
+            let alertaction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(alertaction)
+            presentViewController(alert, animated: true, completion: nil)
+            print("Alert:?:>>>>\(presentedViewController)")
+        }
     }
+    /*
+    public enum UIAlertActionStyle : Int {
+        
+        case Default
+        case Cancel
+        case Destructive
+    }
+ */
 }

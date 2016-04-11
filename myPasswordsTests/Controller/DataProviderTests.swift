@@ -73,6 +73,7 @@ class EntryListDataProviderTests: XCTestCase {
     {
         
         let mockTableView = MockTableView(frame: CGRect(x: 0, y: 0, width: 100, height: 200), style: .Plain)
+        
         mockTableView.dataSource = sut
         
         mockTableView.registerClass(EntryCell.self, forCellReuseIdentifier: "Cell")
@@ -81,50 +82,48 @@ class EntryListDataProviderTests: XCTestCase {
         
         mockTableView.reloadData()
         
-        let cell = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+        let _ = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
 
         XCTAssertTrue(mockTableView.cellGotDequeued)
     }
     
     
-    func testConfigCell_GetsCalledInCellForRow()
-    {
+    
+    func testConfigCell_GetsCalledInCellForRow() {
         
-        let mockTableView = MockTableView()//frame: CGRect(x: 0, y: 0, width: 100, height: 200), style: .Plain)
-        
-        mockTableView.dataSource = sut
-        mockTableView.registerClass(MockTableViewCell.self, forCellReuseIdentifier: "Cell")
-        let firstEntry = Entry(title: "A-Title")
-
-        sut.entryManager.addEntry(firstEntry)
-        
+        let mockTableView = MockTableView.mockTableViewWithDataSource(sut)
+        mockTableView.registerClass(MockItemCell.self, forCellReuseIdentifier: "Cell")
+        let entry = Entry(title: "A-Title")
+        sut.entryManager?.addEntry(entry)
         mockTableView.reloadData()
-        
-        
-        
-        
-        
         let cell = mockTableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0,
-            inSection: 0)) as! MockTableViewCell
-        XCTAssertTrue(cell.configCellGotCalled)
- //       XCTAssertEqual(cell.entry, firstEntry)
+            inSection: 0)) as! MockItemCell
+        XCTAssertEqual(cell.entryItem, entry)
     }
+    
 
     func testSelectingACell_SendsNotifcation()
     {
-        sut.entryManager.addEntry(Entry(title: "test"	))
+        sut.entryManager.addEntry(Entry(title: "test"))
         
         
-        expectationForNotification("EntrySelectedNotifcation", object: nil) { (notification) -> Bool in
-            guard let index = notification.userInfo?["index"] as? Int else {fatalError()}
-            return index == 0
+        expectationForNotification(kEntrySelectedNotification, object: nil) { (notification) -> Bool in
+            guard let index = notification.userInfo?["indexPath"] as? NSIndexPath else {fatalError()}
+            return index.row == 0
         }
         tableView.delegate?.tableView!(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         waitForExpectationsWithTimeout(3, handler: nil)
     }
 
+    func testTitleGetsSet()
+    {
+        sut.entryManager.addEntry(Entry(title: "test"	))
+        let title = tableView.dataSource?.tableView!(tableView, titleForHeaderInSection: 0)
+        XCTAssertEqual(title, "T")
+    }
 
 }
+
 
 extension EntryListDataProviderTests
 {
@@ -136,6 +135,20 @@ extension EntryListDataProviderTests
             cellGotDequeued = true
             return super.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
         }
+        class func mockTableViewWithDataSource(
+            dataSource: UITableViewDataSource) -> MockTableView {
+            
+            let mockTableView = MockTableView(
+                frame: CGRect(x: 0, y: 0, width: 320, height: 480),
+                style: .Plain)
+            
+            mockTableView.dataSource = dataSource
+            mockTableView.registerClass(MockItemCell.self,
+                                        forCellReuseIdentifier: "ItemCell")
+            
+            return mockTableView
+        }
+
     }
     
     class MockTableViewCell: EntryCell
@@ -146,6 +159,19 @@ extension EntryListDataProviderTests
         {
             self.entry = entry
             configCellGotCalled = true
+        }
+        
+        
+    }
+    
+    class MockItemCell : EntryCell {
+        
+        var entryItem: Entry?
+        
+
+        override func configCellWithEntry(entry: Entry)
+        {
+            entryItem = entry
         }
     }
 }

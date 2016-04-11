@@ -143,11 +143,13 @@ class EntryManagerTests: XCTestCase
         entryManager = EntryManager()
         
         XCTAssertEqual(entryManager?.entryCountForSection(0), 2)
-  //      XCTAssertEqual(entryManager?.entryAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)), firstEntry)
- //       XCTAssertEqual(entryManager?.entryAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)), secondEntry)
+        XCTAssertEqual(entryManager?.entryAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)), firstEntry)
+        XCTAssertEqual(entryManager?.entryAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)), secondEntry)
         
         
     }
+    
+
     
 
 }

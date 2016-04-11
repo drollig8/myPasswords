@@ -22,6 +22,9 @@ class EntryManager:NSObject
         return documentURL.URLByAppendingPathComponent("entryList.plist")
     }
     
+    var entriesCount:Int {
+        return entries.count
+    }
     
     override init()
     {
@@ -75,7 +78,7 @@ class EntryManager:NSObject
         }
 
         let sortedSectionLetters = Array(sections).sort({$0 < $1})
-        
+        print(sortedSectionLetters)
         return sortedSectionLetters
     }
     
@@ -113,11 +116,11 @@ class EntryManager:NSObject
         }
     }
     
-    // TODO ist falsch!!
     func headerForSection(section: Int) -> String
     {
-        let title = entries[section].title
-        return title.firstLetterUpperCase
+        let sectionLetters = getSectionLetters()
+        let title = sectionLetters[section]
+        return title
     }
     
     func entryAtIndexPath(indexPath: NSIndexPath) -> Entry
@@ -134,6 +137,7 @@ class EntryManager:NSObject
         
         let section = indexPath.section
         let row = indexPath.row
+        if sections.count == 0 { return Entry(title: "Fake") }
         return sections[section][row]
     }
 }

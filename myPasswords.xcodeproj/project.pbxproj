@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E129B331CBA656700D6724F /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E129B321CBA656700D6724F /* DetailViewControllerTests.swift */; };
 		6E1A89211C867E2900E433B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89201C867E2900E433B2 /* AppDelegate.swift */; };
 		6E1A89231C867E2900E433B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89221C867E2900E433B2 /* ViewController.swift */; };
 		6E1A89261C867E2900E433B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E1A89241C867E2900E433B2 /* Main.storyboard */; };
@@ -21,8 +22,8 @@
 		6E9774121C86CBC7000303B2 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9774111C86CBC7000303B2 /* DataProvider.swift */; };
 		6E9774181C86EDC2000303B2 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */; };
 		6E97741A1C86FC5C000303B2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9774191C86FC5C000303B2 /* DetailViewController.swift */; };
-		6E97741C1C873991000303B2 /* EntryListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E97741B1C873991000303B2 /* EntryListViewControllerTests.swift */; };
-		6E97741E1C873A09000303B2 /* EntryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E97741D1C873A09000303B2 /* EntryListViewController.swift */; };
+		6E97741C1C873991000303B2 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E97741B1C873991000303B2 /* MainViewControllerTests.swift */; };
+		6E97741E1C873A09000303B2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E97741D1C873A09000303B2 /* MainViewController.swift */; };
 		6EA86EC11CB80E16001A5633 /* AddEntryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA86EC01CB80E16001A5633 /* AddEntryViewControllerTests.swift */; };
 		6EB89A671C88A54F0050D5DB /* EntryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB89A661C88A54F0050D5DB /* EntryCellTests.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E129B321CBA656700D6724F /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		6E1A891D1C867E2900E433B2 /* myPasswords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myPasswords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E1A89201C867E2900E433B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E1A89221C867E2900E433B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,8 +58,8 @@
 		6E9774111C86CBC7000303B2 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = Controller/DataProvider.swift; sourceTree = "<group>"; };
 		6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEntryViewController.swift; path = Controller/AddEntryViewController.swift; sourceTree = "<group>"; };
 		6E9774191C86FC5C000303B2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Controller/DetailViewController.swift; sourceTree = "<group>"; };
-		6E97741B1C873991000303B2 /* EntryListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryListViewControllerTests.swift; path = Controller/EntryListViewControllerTests.swift; sourceTree = "<group>"; };
-		6E97741D1C873A09000303B2 /* EntryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryListViewController.swift; path = Controller/EntryListViewController.swift; sourceTree = "<group>"; };
+		6E97741B1C873991000303B2 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewControllerTests.swift; path = Controller/MainViewControllerTests.swift; sourceTree = "<group>"; };
+		6E97741D1C873A09000303B2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controller/MainViewController.swift; sourceTree = "<group>"; };
 		6EA86EC01CB80E16001A5633 /* AddEntryViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEntryViewControllerTests.swift; path = Controller/AddEntryViewControllerTests.swift; sourceTree = "<group>"; };
 		6EB89A661C88A54F0050D5DB /* EntryCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryCellTests.swift; path = Controller/EntryCellTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,10 +162,10 @@
 		6E97740D1C86CB5F000303B2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6E97741D1C873A09000303B2 /* MainViewController.swift */,
 				6E9774111C86CBC7000303B2 /* DataProvider.swift */,
 				6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */,
 				6E9774191C86FC5C000303B2 /* DetailViewController.swift */,
-				6E97741D1C873A09000303B2 /* EntryListViewController.swift */,
 				6E1A894C1C87A51000E433B2 /* EntryCell.swift */,
 			);
 			name = Controller;
@@ -172,8 +174,9 @@
 		6E97740E1C86CB64000303B2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6E129B321CBA656700D6724F /* DetailViewControllerTests.swift */,
+				6E97741B1C873991000303B2 /* MainViewControllerTests.swift */,
 				6E97740F1C86CBB5000303B2 /* DataProviderTests.swift */,
-				6E97741B1C873991000303B2 /* EntryListViewControllerTests.swift */,
 				6EB89A661C88A54F0050D5DB /* EntryCellTests.swift */,
 				6EA86EC01CB80E16001A5633 /* AddEntryViewControllerTests.swift */,
 			);
@@ -288,7 +291,7 @@
 				6E9774181C86EDC2000303B2 /* AddEntryViewController.swift in Sources */,
 				6E1A894D1C87A51000E433B2 /* EntryCell.swift in Sources */,
 				6E1A894B1C86876600E433B2 /* EntryManager.swift in Sources */,
-				6E97741E1C873A09000303B2 /* EntryListViewController.swift in Sources */,
+				6E97741E1C873A09000303B2 /* MainViewController.swift in Sources */,
 				6E1A89211C867E2900E433B2 /* AppDelegate.swift in Sources */,
 				6E97741A1C86FC5C000303B2 /* DetailViewController.swift in Sources */,
 			);
@@ -299,9 +302,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E1A89431C8680C500E433B2 /* EntryTests.swift in Sources */,
-				6E97741C1C873991000303B2 /* EntryListViewControllerTests.swift in Sources */,
+				6E97741C1C873991000303B2 /* MainViewControllerTests.swift in Sources */,
 				6E1A89491C86875800E433B2 /* EntryManagerTests.swift in Sources */,
 				6E9774101C86CBB5000303B2 /* DataProviderTests.swift in Sources */,
+				6E129B331CBA656700D6724F /* DetailViewControllerTests.swift in Sources */,
 				6EB89A671C88A54F0050D5DB /* EntryCellTests.swift in Sources */,
 				6EA86EC11CB80E16001A5633 /* AddEntryViewControllerTests.swift in Sources */,
 			);

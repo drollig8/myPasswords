@@ -1,68 +1,73 @@
 //
-//  AddEntryViewControllerTests.swift
+//  DetailViewControllerTests.swift
 //  myPasswords
 //
-//  Created by Marc Felden on 08.04.16.
+//  Created by Marc Felden on 10.04.16.
 //  Copyright © 2016 madeTK.com. All rights reserved.
 //
 
-import XCTest
 
+import XCTest
 @testable import myPasswords
 
-class AddEntryViewControllerTests: XCTestCase
+class DetailViewControllerTests: XCTestCase
 {
     
-    var sut = AddEntryViewController()
-
+    var sut: DetailViewController!
     override func setUp()
     {
         super.setUp()
-         _ = sut.view
+        sut = DetailViewController()
+        
+        let entry = Entry(title: "Test123", loginName: "test123", password: "test123", url: "test123", remarks: "test123")
+        sut.entry = entry
+        _ = sut.view
+
     }
     
     override func tearDown()
     {
-        
         super.tearDown()
     }
+    
+    
     
     func test_HasTitleTextField()
     {
         
-       
+        
         XCTAssertNotNil(sut.titleTextField)
     }
     
     func test_HasLoginTextField()
     {
-
+        
         XCTAssertNotNil(sut.loginTextField)
     }
     
     func test_HasPasswordTextField1()
     {
-
+        
         XCTAssertNotNil(sut.passwordTextField1)
     }
     
     func test_HasPasswordTextField2()
     {
-
+        
         XCTAssertNotNil(sut.passwordTextField2)
     }
     
     
     func test_HasURLTextField()
     {
-
+        
         XCTAssertNotNil(sut.uRLTextField)
     }
     
     
     func test_HasRemarkTextField()
     {
-
+        
         XCTAssertNotNil(sut.remarkTextField)
     }
     
@@ -79,49 +84,35 @@ class AddEntryViewControllerTests: XCTestCase
     
     func test_cancelButtonDismissesViewController()
     {
-        let sut = MockAddEntryViewController()
+        let sut = MockDetailViewController()
+        let entry = Entry(title: "Test123", loginName: "test123", password: "test123", url: "test123", remarks: "test123")
+        sut.entry = entry
         _ = sut.view
-        guard let cancelButton = sut.navigationItem.leftBarButtonItem else {fatalError()}
+        guard let cancelButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
         sut.performSelector(cancelButton.action)
         XCTAssertTrue(sut.dismissGotCalled)
     }
     
-    func test_saveButtonSavesEntry()
+    func testSettingEntry_SetsTextFields()
     {
-        sut.entryManager = EntryManager()
-        XCTAssertEqual(sut.entryManager!.entriesCount, 0)
-        guard let doneButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
-        sut.performSelector(doneButton.action)
-        XCTAssertEqual(sut.entryManager!.entriesCount, 1)
-
-    }
-    
-    func test_saveButtonDismissesViewController()
-    {
-        let sut = MockAddEntryViewController()
-        _ = sut.view
-        guard let doneButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
-        sut.performSelector(doneButton.action)
-        XCTAssertTrue(sut.dismissGotCalled)
-    }
-    
-    func test_AlertIfTwoPasswordsDontMatch()
-    {
-        // muss man mocken und 
-        sut.passwordTextField1.text = "123"
-        sut.passwordTextField2.text = "234"
-        guard let doneButton = sut.navigationItem.rightBarButtonItem else {fatalError()}
-        sut.performSelector(doneButton.action)
-        print(sut.presentedViewController)
-   //     XCTAssertTrue(sut.presentedViewController is UIAlertController)
+        XCTAssertEqual(sut.titleTextField.text, "Test123")
+        XCTAssertEqual(sut.loginTextField.text, "test123")
+        XCTAssertEqual(sut.passwordTextField1.text, "test123")
+        XCTAssertEqual(sut.uRLTextField.text, "test123")
+        XCTAssertEqual(sut.remarkTextField.text, "test123")
+        
+        
+        
         
     }
     
 }
 
-extension AddEntryViewControllerTests
+
+
+extension DetailViewControllerTests
 {
-    class MockAddEntryViewController:AddEntryViewController
+    class MockDetailViewController:DetailViewController
     {
         var dismissGotCalled = false
         override func dismissViewControllerAnimated(flag: Bool, completion: (() -> Void)?) {
@@ -136,5 +127,3 @@ extension AddEntryViewControllerTests
         
     }
 }
-
-

@@ -17,7 +17,8 @@ class EntryListViewController: UIViewController
     
     override func viewDidLoad()
     {
-        tableView = UITableView(frame: self.view.frame, style: .Grouped)
+        let frame = CGRect(x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height - 60)
+        tableView = UITableView(frame: frame, style: .Grouped)
         self.view.addSubview(tableView)
         tableView.dataSource = dataprovider
         tableView.delegate = dataprovider
@@ -26,9 +27,25 @@ class EntryListViewController: UIViewController
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addEntry(_:)))
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showDetail(_:)), name: "EntrySelectedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showDetail(_:)), name: kEntrySelectedNotification, object: nil)
+        
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+        setTitle()
+    }
+    
+    func setTitle()
+    {
+        self.title = ""
+        if entryManager.entriesCount > 0 {
+            self.title = "\(self.entryManager.entriesCount)"
+        }
+        
+    }
     func addEntry(sender: AnyObject)
     {
         let addEntryViewController = AddEntryViewController()
@@ -43,7 +60,19 @@ class EntryListViewController: UIViewController
     func showDetail(sender:NSNotification)
     {
         let showDetailViewControll =  DetailViewController()
-        navigationController?.pushViewController(showDetailViewControll, animated: true)
+        if let userInfo = sender.userInfo {
+            print(userInfo["indexPath"])
+            if let indexPath = userInfo["indexPath"] as? NSIndexPath {
+                print(entryManager.entriesCount)
+                showDetailViewControll.entry = entryManager.entryAtIndexPath(indexPath)
+                navigationController?.pushViewController(showDetailViewControll, animated: true)
+            } else {
+                fatalError("indexPatherror")
+            } 
+            
+        }
+       //
+        
         
     }
 }

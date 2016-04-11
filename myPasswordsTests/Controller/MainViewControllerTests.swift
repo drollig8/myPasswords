@@ -93,6 +93,13 @@ class EntryListViewControllerTests: XCTestCase
         XCTAssertNotNil(navigationController)
     }
     
+    func testThatTitleShowsNumberOfEntries()
+    {
+        sut.beginAppearanceTransition(true, animated: true)
+        sut.endAppearanceTransition()
+        XCTAssertEqual(sut.title,"")
+        sut.entryManager.addEntry(Entry(title: "A-Title"))
+    }
     
     
     /*
@@ -138,9 +145,11 @@ class EntryListViewControllerTests: XCTestCase
         let mockNC = mockNavigationcontroller(rootViewController: sut)
         UIApplication.sharedApplication().keyWindow?.rootViewController = mockNC
         
-        NSNotificationCenter.defaultCenter().postNotificationName("EntrySelectedNotification", object: nil, userInfo: ["index":1])
+        NSNotificationCenter.defaultCenter().postNotificationName(kEntrySelectedNotification, object: nil, userInfo: ["indexPath":NSIndexPath(forRow: 0, inSection: 0)])
         
         XCTAssertTrue(mockNC.pushedVC is DetailViewController)
+        // test that enrty is provided
+        XCTAssertNotNil((mockNC.pushedVC as! DetailViewController).entry)
     }
 
 
