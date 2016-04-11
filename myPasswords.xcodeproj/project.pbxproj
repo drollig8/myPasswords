@@ -26,6 +26,9 @@
 		6E97741E1C873A09000303B2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E97741D1C873A09000303B2 /* MainViewController.swift */; };
 		6EA86EC11CB80E16001A5633 /* AddEntryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA86EC01CB80E16001A5633 /* AddEntryViewControllerTests.swift */; };
 		6EB89A671C88A54F0050D5DB /* EntryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB89A661C88A54F0050D5DB /* EntryCellTests.swift */; };
+		6EFEC1D21CBBE10700347590 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EFEC1D11CBBE10700347590 /* DropboxSDK.framework */; };
+		6EFEC1D41CBBE11600347590 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EFEC1D31CBBE11600347590 /* Security.framework */; };
+		6EFEC1D61CBBE11E00347590 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EFEC1D51CBBE11E00347590 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		6E97741D1C873A09000303B2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controller/MainViewController.swift; sourceTree = "<group>"; };
 		6EA86EC01CB80E16001A5633 /* AddEntryViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEntryViewControllerTests.swift; path = Controller/AddEntryViewControllerTests.swift; sourceTree = "<group>"; };
 		6EB89A661C88A54F0050D5DB /* EntryCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryCellTests.swift; path = Controller/EntryCellTests.swift; sourceTree = "<group>"; };
+		6EFEC1D11CBBE10700347590 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		6EFEC1D31CBBE11600347590 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6EFEC1D51CBBE11E00347590 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EFEC1D61CBBE11E00347590 /* QuartzCore.framework in Frameworks */,
+				6EFEC1D41CBBE11600347590 /* Security.framework in Frameworks */,
+				6EFEC1D21CBBE10700347590 /* DropboxSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +94,9 @@
 		6E1A89141C867E2900E433B2 = {
 			isa = PBXGroup;
 			children = (
+				6EFEC1D51CBBE11E00347590 /* QuartzCore.framework */,
+				6EFEC1D31CBBE11600347590 /* Security.framework */,
+				6EFEC1D11CBBE10700347590 /* DropboxSDK.framework */,
 				6E1A891F1C867E2900E433B2 /* myPasswords */,
 				6E1A89341C867E2900E433B2 /* myPasswordsTests */,
 				6E1A891E1C867E2900E433B2 /* Products */,
@@ -429,6 +441,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = myPasswords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswords;
@@ -441,6 +457,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = myPasswords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswords;
