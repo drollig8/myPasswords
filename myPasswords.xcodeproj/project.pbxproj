@@ -18,6 +18,7 @@
 		6E1A89491C86875800E433B2 /* EntryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A89481C86875800E433B2 /* EntryManagerTests.swift */; };
 		6E1A894B1C86876600E433B2 /* EntryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A894A1C86876600E433B2 /* EntryManager.swift */; };
 		6E1A894D1C87A51000E433B2 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A894C1C87A51000E433B2 /* EntryCell.swift */; };
+		6E73F51D1CBD7E4300F50996 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E73F51C1CBD7E4300F50996 /* temp.m */; };
 		6E9774101C86CBB5000303B2 /* DataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E97740F1C86CBB5000303B2 /* DataProviderTests.swift */; };
 		6E9774121C86CBC7000303B2 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9774111C86CBC7000303B2 /* DataProvider.swift */; };
 		6E9774181C86EDC2000303B2 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */; };
@@ -57,6 +58,8 @@
 		6E1A89481C86875800E433B2 /* EntryManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryManagerTests.swift; path = Model/EntryManagerTests.swift; sourceTree = "<group>"; };
 		6E1A894A1C86876600E433B2 /* EntryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryManager.swift; path = Model/EntryManager.swift; sourceTree = "<group>"; };
 		6E1A894C1C87A51000E433B2 /* EntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryCell.swift; path = Controller/EntryCell.swift; sourceTree = "<group>"; };
+		6E73F51B1CBD7E4300F50996 /* myPasswords-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myPasswords-Bridging-Header.h"; sourceTree = "<group>"; };
+		6E73F51C1CBD7E4300F50996 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
 		6E97740F1C86CBB5000303B2 /* DataProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProviderTests.swift; path = Controller/DataProviderTests.swift; sourceTree = "<group>"; };
 		6E9774111C86CBC7000303B2 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = Controller/DataProvider.swift; sourceTree = "<group>"; };
 		6E9774171C86EDC2000303B2 /* AddEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddEntryViewController.swift; path = Controller/AddEntryViewController.swift; sourceTree = "<group>"; };
@@ -94,12 +97,14 @@
 		6E1A89141C867E2900E433B2 = {
 			isa = PBXGroup;
 			children = (
+				6E73F51C1CBD7E4300F50996 /* temp.m */,
 				6EFEC1D51CBBE11E00347590 /* QuartzCore.framework */,
 				6EFEC1D31CBBE11600347590 /* Security.framework */,
 				6EFEC1D11CBBE10700347590 /* DropboxSDK.framework */,
 				6E1A891F1C867E2900E433B2 /* myPasswords */,
 				6E1A89341C867E2900E433B2 /* myPasswordsTests */,
 				6E1A891E1C867E2900E433B2 /* Products */,
+				6E73F51B1CBD7E4300F50996 /* myPasswords-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,7 +244,7 @@
 		6E1A89151C867E2900E433B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = madeTK.com;
 				TargetAttributes = {
@@ -302,6 +307,7 @@
 				6E1A89231C867E2900E433B2 /* ViewController.swift in Sources */,
 				6E9774181C86EDC2000303B2 /* AddEntryViewController.swift in Sources */,
 				6E1A894D1C87A51000E433B2 /* EntryCell.swift in Sources */,
+				6E73F51D1CBD7E4300F50996 /* temp.m in Sources */,
 				6E1A894B1C86876600E433B2 /* EntryManager.swift in Sources */,
 				6E97741E1C873A09000303B2 /* MainViewController.swift in Sources */,
 				6E1A89211C867E2900E433B2 /* AppDelegate.swift in Sources */,
@@ -440,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -449,6 +456,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "myPasswords-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -456,6 +465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -465,6 +475,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.madeTK.myPasswords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "myPasswords-Bridging-Header.h";
 			};
 			name = Release;
 		};
