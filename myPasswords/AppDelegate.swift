@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if DBSession.sharedSession().isLinked() {
                 
                 // This notification will be posted every time a new connection is established by a Dropbox session.
+                print("Application was restarted after Dropbox login successful.")
                 NSNotificationCenter.defaultCenter().postNotificationName("didLinkToDropboxAccountNotification", object: nil)
                 
                 return true

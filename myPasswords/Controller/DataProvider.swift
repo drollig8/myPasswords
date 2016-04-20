@@ -34,7 +34,6 @@ class EntryListDataProvider: NSObject, UITableViewDataSource, UITableViewDelegat
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         let numberOfSections = entryManager.numberOfSections()
-        print("Number of sections: \(numberOfSections)")
         return numberOfSections
     }
     

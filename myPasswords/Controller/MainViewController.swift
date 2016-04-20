@@ -21,8 +21,8 @@ class EntryListViewController: UIViewController, DBRestClientDelegate
     
     override func viewDidLoad()
     {
-        let frame = CGRect(x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height - 60)
-        tableView = UITableView(frame: frame, style: .Grouped)
+        let tableFrame = CGRect(x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height - 60)
+        tableView = UITableView(frame: tableFrame, style: .Grouped)
         self.view.addSubview(tableView)
         tableView.dataSource = dataprovider
         tableView.delegate = dataprovider
@@ -52,11 +52,25 @@ class EntryListViewController: UIViewController, DBRestClientDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "copyLocalFileToDropBox", name: "fileReadyForUploadToDropBox", object: nil)
         
         if DBSession.sharedSession().isLinked() {
+            print("ViewDidLoad: Dropbox is linked.")
             bbiConnect.title = "Disconnect"
             initDropboxRestClient()
+           
         } else {
-            bbiConnect.title = "Connect"
+            linkToDropBox()
         }
+    }
+    
+    
+    func tryToReadOurDataFileFromDropBox()
+    {
+        let entryPathURL = entryManager.entryPathURL
+        
+        let uploadFilename = entryPathURL.lastPathComponent
+        let destinationPath = "".stringByAppendingString(uploadFilename!)
+        let sourcePath = entryPathURL.path
+        print("Trying to load database from dopbox. If not successfull we will use existing one...")
+        self.dbRestClient.loadFile(destinationPath, intoPath: sourcePath)
     }
     
     func handleDidLinkNotification(notification: NSNotification) {
@@ -71,26 +85,14 @@ class EntryListViewController: UIViewController, DBRestClientDelegate
     }
     
     func copyLocalFileToDropBox() {
+        print("Saving entries and uploading to dropbox")
         let entryPathURL = entryManager.entryPathURL
         entryManager.save()
-        let nsEntryItems = NSArray(contentsOfURL: entryPathURL)
         
-        //let uploadFilename = entryPathURL.lastPathComponent
- 
-        
-        let uploadFilename = "testtext.txt"
-        let sourcePath = NSBundle.mainBundle().pathForResource("testtext", ofType: "txt")
-        print(sourcePath)
+        let uploadFilename = entryPathURL.lastPathComponent
         let destinationPath = "/"
-        
- 
-        
-        
-        let sourcePath1 = "file:///Users/marcfelden/Library/Developer/CoreSimulator/Devices/FCB1A8BD-1AFD-4F7A-9674-2C81BCF5C483/data/Containers/Data/Application/5D87A533-0DD6-42DD-A439-F5E8C7167990/Documents/"
-        
-        let source = entryPathURL.path
-        
-        self.dbRestClient.uploadFile(uploadFilename, toPath: destinationPath, withParentRev: nil, fromPath: source)
+        let sourcePath = entryPathURL.path
+        self.dbRestClient.uploadFile(uploadFilename, toPath: destinationPath, withParentRev: nil, fromPath: sourcePath)
 
     }
 
@@ -98,6 +100,7 @@ class EntryListViewController: UIViewController, DBRestClientDelegate
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
+         tryToReadOurDataFileFromDropBox()
         self.tableView.reloadData()
         setTitle()
     }
@@ -135,22 +138,34 @@ class EntryListViewController: UIViewController, DBRestClientDelegate
             } 
             
         }
-       //
-        
-        
+    }
+    
+    @IBAction func connectToDropbox(sender: AnyObject)
+    {
+        if !DBSession.sharedSession().isLinked() {
+            linkToDropBox()
+        }
+        else {
+            unlinkFromDropBox()
+        }
+    }
+    
+    func linkToDropBox()
+    {
+        DBSession.sharedSession().linkFromController(self)
+    }
+    
+    func unlinkFromDropBox()
+    {
+        DBSession.sharedSession().unlinkAll()
+        bbiConnect.title = "Connect"
+        dbRestClient = nil
     }
     
     // MARK: Dropbox Delegate Methods
     
-    @IBAction func connectToDropbox(sender: AnyObject) {
-        if !DBSession.sharedSession().isLinked() {
-            DBSession.sharedSession().linkFromController(self)
-        }
-        else {
-            DBSession.sharedSession().unlinkAll()
-            bbiConnect.title = "Connect"
-            dbRestClient = nil
-        }
+    func restClient(client: DBRestClient!, loadedFile destPath: String!) {
+        print("The file has been down loaded.")
     }
     
     func restClient(client: DBRestClient!, uploadedFile destPath: String!, from srcPath: String!, metadata: DBMetadata!) {
@@ -162,6 +177,4 @@ class EntryListViewController: UIViewController, DBRestClientDelegate
         print("File upload failed.")
         print(error.description)
     }
-    
-    
 }
