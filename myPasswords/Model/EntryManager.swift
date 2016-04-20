@@ -54,6 +54,8 @@ class EntryManager:NSObject
         }
         if nsEntryItems.count > 0 {
             (nsEntryItems as NSArray).writeToURL(entryPathURL, atomically: true)
+            
+            
         } else {
             do {
                 try NSFileManager.defaultManager().removeItemAtURL(entryPathURL)
